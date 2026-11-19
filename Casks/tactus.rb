@@ -27,14 +27,21 @@ cask "tactus" do
   ]
 
   caveats <<~EOS
-    Tactus is not signed with an Apple Developer ID. On first launch, macOS blocks it:
-    open System Settings > Privacy & Security, then click "Open Anyway" next to Tactus.
-    After an update, macOS may ask again for the permissions you gave (calendar, microphone,
-    accessibility).
+    Tactus n'est pas signé par un compte Apple Developer : macOS refuse de l'ouvrir.
+    Si tu fais confiance à cette archive, lève la quarantaine de cette version, une fois :
+      xattr -dr com.apple.quarantine "#{appdir}/Tactus.app"
+    ou lance-le une fois, puis Réglages Système > Confidentialité et sécurité >
+    « Ouvrir quand même ». Sur un Mac géré, si un outil de l'entreprise le bloque,
+    passe par l'IT : ne contourne rien.
+    Mac sans droits admin : installe dans ton dossier d'apps,
+      brew install --cask --appdir=~/Applications leozerbib/maestro/tactus
+    Après une mise à jour, macOS peut redemander les autorisations données
+    (agenda, micro, accessibilité).
 
-    Tactus n'est pas signé par un compte Apple Developer. Au premier lancement, macOS le bloque :
-    ouvrez Réglages Système > Confidentialité et sécurité, puis « Ouvrir quand même » face à Tactus.
-    Après une mise à jour, macOS peut redemander les autorisations données (agenda, micro,
-    accessibilité).
+    Tactus is not signed with an Apple Developer account, so macOS blocks it. If you
+    trust this archive, clear the quarantine once:
+      xattr -dr com.apple.quarantine "#{appdir}/Tactus.app"
+    or use System Settings > Privacy & Security > "Open Anyway".
+    Without admin rights, install with --appdir=~/Applications.
   EOS
 end

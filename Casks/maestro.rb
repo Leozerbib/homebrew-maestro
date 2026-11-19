@@ -29,14 +29,21 @@ cask "maestro" do
   ]
 
   caveats <<~EOS
-    Maestro n'est pas signé par un compte Apple Developer : macOS bloque le premier
-    lancement. Pour l'ouvrir : lancez Maestro une fois (il sera refusé), puis
-    Réglages Système > Confidentialité et sécurité > Sécurité > « Ouvrir quand même »
-    (le bouton reste disponible environ une heure), puis entrez votre mot de passe.
+    Maestro n'est pas signé par un compte Apple Developer : macOS refuse de l'ouvrir.
+    Si tu fais confiance à cette archive, lève la quarantaine de cette version, une fois :
+      xattr -dr com.apple.quarantine "#{appdir}/Maestro.app"
+    ou lance-le une fois, puis Réglages Système > Confidentialité et sécurité >
+    « Ouvrir quand même ». Sur un Mac géré, si un outil de l'entreprise le bloque,
+    passe par l'IT : ne contourne rien.
+    Mac sans droits admin : installe dans ton dossier d'apps,
+      brew install --cask --appdir=~/Applications leozerbib/maestro/maestro
     Au premier lancement, macOS peut demander l'accès au trousseau
-    (« Maestro Safe Storage ») : acceptez, sinon aucun terminal ne s'affiche.
+    (« Maestro Safe Storage ») : accepte, sinon aucun terminal ne s'affiche.
 
-    Maestro is not signed with an Apple Developer account. Launch it once (it will be
-    blocked), then System Settings > Privacy & Security > Security > "Open Anyway".
+    Maestro is not signed with an Apple Developer account, so macOS blocks it. If you
+    trust this archive, clear the quarantine once:
+      xattr -dr com.apple.quarantine "#{appdir}/Maestro.app"
+    or use System Settings > Privacy & Security > "Open Anyway".
+    Without admin rights, install with --appdir=~/Applications.
   EOS
 end

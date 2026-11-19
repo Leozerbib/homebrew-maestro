@@ -12,6 +12,8 @@ Le code source de Maestro vit dans un dépôt privé. Ce dépôt public ne conti
 brew install --cask leozerbib/maestro/maestro
 ```
 
+**Mac sans droits admin** (`/Applications` interdit en écriture, cas d'un Mac géré) : ajoute `--appdir=~/Applications`, ou une fois pour toutes `export HOMEBREW_CASK_OPTS="--appdir=~/Applications"` dans `~/.zprofile`. Vaut aussi pour Tactus.
+
 Utilise toujours le **nom complet** `leozerbib/maestro/maestro`. Depuis Homebrew 6, un tap tiers n'est pas approuvé d'office. Installer par le nom complet approuve ce cask en un seul geste. Si tu as déjà fait `brew tap leozerbib/maestro`, lance `brew trust --cask leozerbib/maestro/maestro`, puis `brew install --cask maestro`.
 
 Les Mac Intel ne sont pas pris en charge pour l'instant.
@@ -72,7 +74,7 @@ Comme pour Maestro, utilise le **nom complet** : il approuve ce cask en un seul 
 
 ### Premier lancement
 
-Tactus est signé *ad hoc*, comme Maestro : ouvre-le une fois, puis **Réglages Système › Confidentialité et sécurité › Ouvrir quand même**. Après une mise à jour, macOS peut redemander les autorisations déjà données (agenda, micro, accessibilité).
+Tactus est signé *ad hoc*, comme Maestro : macOS refuse de l'ouvrir. Si tu fais confiance à l'archive, lève la quarantaine une fois (`xattr -dr com.apple.quarantine ~/Applications/Tactus.app`, ou `/Applications/Tactus.app`), ou ouvre-le une fois puis **Réglages Système › Confidentialité et sécurité › Ouvrir quand même**. Après une mise à jour, macOS peut redemander les autorisations déjà données (agenda, micro, accessibilité).
 
 Tactus n'a pas d'icône dans le Dock : il vit dans l'Île et dans la barre des menus (Réglages…, Quitter).
 
@@ -109,7 +111,8 @@ Windows (winget) viendra plus tard, depuis ce même dépôt.
 Distribution repository for **Maestro**, a cockpit for coding agents, and **Tactus**, its macOS companion. The source code is private; this public repository only holds the casks and the release archives.
 
 - **Install** (Apple Silicon, macOS 13+): `brew install --cask leozerbib/maestro/maestro`. Use the fully qualified name: since Homebrew 6, it trusts the cask in one step.
-- **First launch**: Maestro is ad hoc signed, not notarized. Open it once, then go to System Settings › Privacy & Security and click **Open Anyway**. The button stays available for about an hour. Allow the keychain prompt for "Maestro Safe Storage".
+- **No admin rights**: add `--appdir=~/Applications` (or set `HOMEBREW_CASK_OPTS="--appdir=~/Applications"`).
+- **First launch**: Maestro is ad hoc signed, not notarized. If you trust the archive, `xattr -dr com.apple.quarantine <appdir>/Maestro.app` clears the quarantine once. Open it once, then go to System Settings › Privacy & Security and click **Open Anyway**. The button stays available for about an hour. Allow the keychain prompt for "Maestro Safe Storage".
 - **Update**: `brew upgrade --cask leozerbib/maestro/maestro`. At most once a day on launch, Maestro asks the public GitHub API for the latest release (no token, no data sent) and shows a notice. You can turn it off in Settings › General › Updates.
 - **Uninstall**: `brew uninstall --cask --zap maestro`. This never removes `~/.maestro` (server data) or your agents' folders.
 - **Tactus** (Apple Silicon or Intel, macOS 14+): `brew install --cask leozerbib/maestro/tactus`. The Island at the top of the screen; it works alone, and follows Maestro (0.2.0 or later) on the same Mac. To let it act on sessions, pair it with the code from Maestro › Settings › Tactus. Even paired, it only approves a card that is open in front of you. Ad hoc signed: use **Open Anyway** on first launch.
