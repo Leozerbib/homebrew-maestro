@@ -60,9 +60,37 @@ Télécharge `Maestro-X.Y.Z-arm64.zip` dans la [release `maestro-vX.Y.Z`](https:
 
 ## Tactus
 
-<!-- Section de Tactus : écrite par la session du compagnon (Casks/tactus.rb, releases tactus-vX.Y.Z). -->
+Tactus est l'Île de Maestro : une bande en haut de l'écran, autour de l'encoche. Elle montre tes sessions d'agents, les décisions en attente, la musique, l'agenda, le presse-papiers et l'état du Mac. Elle marche seule ; reliée à Maestro sur le même Mac, elle prend son apparence et, une fois appairée, peut agir sur tes sessions.
 
-*À venir.*
+### Installer (Mac Apple Silicon ou Intel, macOS 14 ou plus)
+
+```sh
+brew install --cask leozerbib/maestro/tactus
+```
+
+Comme pour Maestro, utilise le **nom complet** : il approuve ce cask en un seul geste. Pour se relier, Tactus demande **Maestro 0.2.0 ou plus**.
+
+### Premier lancement
+
+Tactus est signé *ad hoc*, comme Maestro : ouvre-le une fois, puis **Réglages Système › Confidentialité et sécurité › Ouvrir quand même**. Après une mise à jour, macOS peut redemander les autorisations déjà données (agenda, micro, accessibilité).
+
+Tactus n'a pas d'icône dans le Dock : il vit dans l'Île et dans la barre des menus (Réglages…, Quitter).
+
+### Relier Tactus à Maestro
+
+1. Lance Maestro sur le même Mac. Tactus le trouve tout seul et suit son thème : il peut alors tout lire, rien changer.
+2. Pour qu'il puisse agir (approuver, répondre, interrompre, compacter, écrire à une session), ouvre **Maestro › Réglages › Tactus**, crée un code, puis saisis-le dans **Tactus › Réglages › Maestro**.
+3. Même appairée, Tactus n'approuve qu'une carte que tu as devant toi : la carte doit être ouverte et immobile un instant avant qu'Entrée ou un clic la valide. Aucun message d'agent ne vaut accord.
+
+### Mettre à jour, désinstaller
+
+```sh
+brew upgrade --cask leozerbib/maestro/tactus
+brew uninstall --cask tactus
+brew uninstall --cask --zap tactus    # retire aussi ses réglages et journaux
+```
+
+`--zap` ne retire que `~/Library/Application Support/Tactus`, `~/Library/Logs/Tactus` et ses préférences. Le secret d'appairage reste au trousseau : oublie l'appairage dans les réglages de Tactus avant, ou révoque l'appareil dans Maestro.
 
 ## Organisation
 
@@ -84,3 +112,4 @@ Distribution repository for **Maestro**, a cockpit for coding agents, and **Tact
 - **First launch**: Maestro is ad hoc signed, not notarized. Open it once, then go to System Settings › Privacy & Security and click **Open Anyway**. The button stays available for about an hour. Allow the keychain prompt for "Maestro Safe Storage".
 - **Update**: `brew upgrade --cask leozerbib/maestro/maestro`. At most once a day on launch, Maestro asks the public GitHub API for the latest release (no token, no data sent) and shows a notice. You can turn it off in Settings › General › Updates.
 - **Uninstall**: `brew uninstall --cask --zap maestro`. This never removes `~/.maestro` (server data) or your agents' folders.
+- **Tactus** (Apple Silicon or Intel, macOS 14+): `brew install --cask leozerbib/maestro/tactus`. The Island at the top of the screen; it works alone, and follows Maestro (0.2.0 or later) on the same Mac. To let it act on sessions, pair it with the code from Maestro › Settings › Tactus. Even paired, it only approves a card that is open in front of you. Ad hoc signed: use **Open Anyway** on first launch.
