@@ -1,6 +1,6 @@
 cask "maestro" do
-  version "0.3.0"
-  sha256 "f245d7fe94f17c155f5b79123acfbdc75ef8faf6c9c20897076bced8f25d0282"
+  version "0.4.0"
+  sha256 "64ad204414c2157351e753b13df7a6e8e23b4ad2f1e3770fd9133eab40842410"
 
   url "https://github.com/Leozerbib/homebrew-maestro/releases/download/maestro-v#{version}/Maestro-#{version}-arm64.zip"
   name "Maestro"
@@ -15,6 +15,7 @@ cask "maestro" do
     strategy :github_releases
   end
 
+  conflicts_with cask: ["maestro@beta", "maestro@dev"]
   depends_on arch: :arm64
   depends_on macos: :ventura
 
@@ -38,7 +39,8 @@ cask "maestro" do
     Mac sans droits admin : installe dans ton dossier d'apps,
       brew install --cask --appdir=~/Applications leozerbib/maestro/maestro
     Au premier lancement, macOS peut demander l'accès au trousseau
-    (« Maestro Safe Storage ») : accepte, sinon aucun terminal ne s'affiche.
+    (« Maestro Safe Storage ») : choisis « Toujours autoriser », sinon aucun terminal ne
+    s'affiche. Les versions suivantes, signées par la même identité, ne le redemandent plus.
 
     Maestro is not signed with an Apple Developer account, so macOS blocks it. If you
     trust this archive, clear the quarantine once:
