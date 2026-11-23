@@ -1,7 +1,7 @@
 # Cask de Tactus pour le tap github.com/Leozerbib/homebrew-maestro (fichier Casks/tactus.rb).
 cask "tactus" do
-  version "0.1.2"
-  sha256 "6d743a6c32bcaed09456c5cef23b96b1ffc4cf9373376e94755f8318448a42e3"
+  version "0.1.3"
+  sha256 "4340c9b3a5527d15ffb8eb4650d18428557a7dfc192c358f4c53e82b3fb2dd25"
 
   url "https://github.com/Leozerbib/homebrew-maestro/releases/download/tactus-v#{version}/Tactus-#{version}.zip"
   name "Tactus"
