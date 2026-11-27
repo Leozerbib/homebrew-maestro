@@ -1,6 +1,6 @@
 cask "maestro" do
-  version "0.6.0"
-  sha256 "cb2f2b02d60c5c8a673a9ff43fabf603ce022a83f8b2e5fe5527f227d031b3b3"
+  version "0.7.0"
+  sha256 "291c0a97e24548793bc1ae88ef8804e446ffb7e9c6df44c252530b6fe2ef4fa2"
 
   url "https://github.com/Leozerbib/homebrew-maestro/releases/download/maestro-v#{version}/Maestro-#{version}-arm64.zip"
   name "Maestro"
