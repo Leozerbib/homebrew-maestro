@@ -1,7 +1,7 @@
 # Cask de Tactus pour le tap github.com/Leozerbib/homebrew-maestro (fichier Casks/tactus.rb).
 cask "tactus" do
-  version "0.3.1"
-  sha256 "6ee794bf7cf95394e238ff7391a923112d759f56e4ca2f8498bf34d5a60953fb"
+  version "0.4.0"
+  sha256 "3e3eca434d1e177276d14141881312efefe1026c4687418fc652495ab91b65c7"
 
   url "https://github.com/Leozerbib/homebrew-maestro/releases/download/tactus-v#{version}/Tactus-#{version}.zip"
   name "Tactus"
@@ -36,8 +36,10 @@ cask "tactus" do
     passe par l'IT : ne contourne rien.
     Mac sans droits admin : installe dans ton dossier d'apps,
       brew install --cask --appdir=~/Applications leozerbib/maestro/tactus
-    Après une mise à jour, macOS peut redemander les autorisations données
-    (agenda, micro, accessibilité).
+    Au premier lancement (et une dernière fois lors du passage depuis une version
+    signée ad hoc), macOS demande les autorisations (Trousseau, agenda, micro,
+    accessibilité) : choisis « Toujours autoriser » pour le Trousseau. Les versions
+    suivantes, signées par la même identité, les conservent.
 
     Tactus is not signed with an Apple Developer account, so macOS blocks it. If you
     trust this archive, clear the quarantine once:
